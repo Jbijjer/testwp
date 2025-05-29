@@ -33,6 +33,10 @@
       overflow-x: hidden;
     }
 
+    .inscription-visible {
+      display: none !important;
+    }
+
     .main-nav {
       width: 100%;
       background: transparent !important;
@@ -95,6 +99,7 @@
     .nav-menu a:hover,
     .nav-menu a:focus {
       color: var(--main-yellow);
+      /*background: rgba(255, 193, 7, 0.13);*/
       outline: none;
     }
 
@@ -137,7 +142,7 @@
       }
 
       .mobile-menu-toggle {
-        display: block;
+        display: none;
       }
     }
 
@@ -648,10 +653,6 @@
       font-size: 0.98rem;
     }
 
-    .inscription-visible {
-      display: none !important;
-    }
-
     .inscription-section {
       background: linear-gradient(135deg,
           var(--main-yellow) 0%,
@@ -832,6 +833,10 @@
         padding: 54px 10px;
       }
 
+      .invisible-mobile {
+        display: none;
+      }
+
       .mission-content {
         grid-template-columns: 1fr;
         gap: 14px;
@@ -893,12 +898,19 @@
 
       .program-images-row {
         flex-direction: column;
-        gap: 14px;
+        gap: 10px;
+        height: 140px;
       }
 
       .program-img {
-        max-width: 97vw;
-        height: 160px;
+        max-width: 85vw;
+        height: 110px;
+        margin: 10px 0 10px 0;
+      }
+
+      .program-img:hover {
+        transform: scale(1.00) rotate(-1deg);
+        box-shadow: 0 12px 40px rgba(255, 193, 7, 0.12);
       }
 
       .program-box-row {
@@ -910,6 +922,33 @@
       .program-box {
         padding: 28px 13px 20px 13px;
         min-width: 0;
+      }
+
+      .mobile-menu-toggle {
+        display: block !important;
+        position: fixed;
+        top: 16px;
+        right: 20px;
+        z-index: 2001;
+        background: #4a3b6b;
+        border-radius: 50%;
+        width: 56px;
+        /* Largeur = hauteur */
+        height: 56px;
+        padding: 0;
+        /* On enlève le padding */
+        box-shadow: 0 3px 16px rgba(0, 0, 0, 0.12);
+        transition: background 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.1rem;
+        /* Ajuste si besoin */
+      }
+
+      .mobile-menu-toggle:active,
+      .mobile-menu-toggle:focus {
+        background: #6b4e7d;
       }
 
       @media (max-width: 600px) {
@@ -950,14 +989,14 @@
 
         .program-images-row {
           gap: 10px;
-          margin: 18px 0 18px 0;
+          margin: 10px 0 10px 0;
           height: 140px;
         }
 
         .program-img {
-          height: 120px;
-          max-width: 180px;
-          flex: 0 0 180px;
+          height: 100px;
+          max-width: 140px;
+          flex: 0 0 140px;
         }
       }
     }
@@ -984,11 +1023,12 @@
       </ul>
       <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Menu mobile" aria-expanded="false"
         aria-controls="navMenu">☰</button>
+
     </div>
   </nav>
   <section class="hero" id="accueil">
     <!-- LOGO haut gauche -->
-    <div class="hero-logo" aria-hidden="true">
+    <div class="hero-logo invisible-mobile" aria-hidden="true">
       <img src="images\logo-imprevu.png" alt="Logo Imprévu Improvisation" width="240" height="240"
         style="width:240px;height:240px;object-fit:contain;display:block;">
     </div>
@@ -1071,12 +1111,9 @@
       offrir un projet pédagogique particulier révolutionnaire.
     </p>
     <div class="program-images-row">
-      <img src="images\élèves-en-action-1.png" alt="Élèves en action" class="program-img"
-        data-img="1" />
-      <img src="images\élèves-en-action-2.png" alt="Formation théâtrale" class="program-img"
-        data-img="2" />
-      <img src="images\élèves-en-action-3.png" alt="Spectacle étudiant" class="program-img"
-        data-img="3" />
+      <img src="images\élèves-en-action-1.png" alt="Élèves en action" class="program-img" data-img="1" />
+      <img src="images\élèves-en-action-2.png" alt="Formation théâtrale" class="program-img" data-img="2" />
+      <img src="images\élèves-en-action-3.png" alt="Spectacle étudiant" class="program-img" data-img="3" />
     </div>
     <div class="program-box-row">
       <div class="program-box">
@@ -1245,6 +1282,7 @@
         idx = (idx + 1) % slides.length;
         slides[idx].classList.add("active");
       }, 4500);
+      document.getElementById("mobileToggle").addEventListener("click", toggleMobileMenu);
     });
     // Fermeture du bandeau
     function closeBanner() {
