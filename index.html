@@ -575,7 +575,7 @@
       margin-bottom: 12px;
       color: #b97c00;
       font-weight: 700;
-      font-size: 1.15rem;
+      font-size: 1.55rem;
       letter-spacing: 0.01em;
     }
 
@@ -833,6 +833,26 @@
         padding: 54px 10px;
       }
 
+      .section-title {
+        font-size: 2em;
+        letter-spacing: 1px;
+        font-weight: 700;
+        color: var(--main-purple);
+      }
+
+      .section h2::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -12px;
+        transform: translateX(-50%);
+        margin: 20px auto 10px;
+        width: 60%;
+        height: 4px;
+        background: linear-gradient(to right, var(--main-yellow2), var(--main-purple2));
+        border-radius: 2px;
+      }
+
       .invisible-mobile {
         display: none;
       }
@@ -903,8 +923,8 @@
       }
 
       .program-img {
-        max-width: 85vw;
-        height: 110px;
+        max-width: 75vw;
+        height: 100px;
         margin: 10px 0 10px 0;
       }
 
@@ -979,10 +999,6 @@
           font-size: 1.01rem;
         }
 
-        .section h2 {
-          font-size: 1.45rem;
-        }
-
         .main-nav {
           font-size: 0.95rem;
         }
@@ -1049,8 +1065,8 @@
     <div class="scroll-indicator" aria-hidden="true"></div>
   </section>
   <section class="section" id="mission">
-    <h2>Notre Mission</h2>
-    <div class="mission-content">
+    <h2 class="section-title">Notre Mission</h2>
+    <div class=" mission-content">
       <div class="mission-text">
         <p>
           <strong>En tant qu'organisme culturel professionnel reconnu par la Ville de Saguenay</strong>, le théâtre de
@@ -1084,7 +1100,7 @@
         </p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🎪</div>
+        <div class="feature-icon">✨</div>
         <h3>Services Variés</h3>
         <p>
           Offrir des services de formation, d'animation et de représentation
@@ -1137,8 +1153,8 @@
     </div>
   </section>
   <section class="section" id="formations">
-    <h2>Nos Formations</h2>
-    <div class="features-grid">
+    <h2 class="section-title">Nos Formations</h2>
+    <div class=" features-grid">
       <div class="feature-card">
         <div class="feature-image">IMAGE<br />FORMATION<br />ENTREPRISE</div>
         <div class="feature-icon">💼</div>
@@ -1159,7 +1175,7 @@
       </div>
       <div class="feature-card">
         <div class="feature-image">IMAGE<br />FORMATION<br />ADULTES</div>
-        <div class="feature-icon">👥</div>
+        <div class="feature-icon">👨‍🏫</div>
         <h3>Formations Particulières</h3>
         <p>
           Cours personnalisés pour adultes souhaitant découvrir ou approfondir
@@ -1176,8 +1192,8 @@
     </div>
   </section>
   <section class="section team-section" id="equipe">
-    <h2>Notre Équipe</h2>
-    <div class="team-grid">
+    <h2 class="section-title">Notre Équipe</h2>
+    <div class=" team-grid">
       <div class="team-member">
         <div class="team-photo">PHOTO<br />ÉQUIPE<br />1</div>
         <h4>Formateur 1</h4>
@@ -1218,8 +1234,8 @@
     <a href="#contact" class="inscription-cta-button">Nous contacter</a>
   </section>
   <section class="section contact-section" id="contact">
-    <h2>Contact</h2>
-    <div class="contact-card">
+    <h2 class="section-title">Contact</h2>
+    <div class=" contact-card">
       <h3 style="margin-bottom: 20px; color: #4a3b6b">
         Pour nous joindre
       </h3>
