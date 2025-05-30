@@ -35,7 +35,7 @@
 
     .inscription-visible {
       /* Ici on met "block" ou "none" pour afficher ou non les encadrés jaunes pour les inscriptions. */
-      display: none
+      display: none;
     }
 
     .main-nav {
@@ -1003,7 +1003,7 @@
       }
 
       .back-to-top {
-        bottom: 50px;
+        bottom: 90px;
       }
 
       .back-to-top.bumped {
@@ -1410,10 +1410,12 @@
     function updateBackToTopPosition() {
       const banner = document.getElementById("topBanner");
       const backToTopBtn = document.getElementById("backToTop");
+      const element = document.querySelector('.inscription-visible');
+      const style = window.getComputedStyle(element);
 
       if (!banner || !backToTopBtn) return;
 
-      if (banner.classList.contains("hidden")) {
+      if (banner.classList.contains("hidden") || style.display === 'none') {
         backToTopBtn.classList.remove("bumped");
       } else {
         backToTopBtn.classList.add("bumped");
