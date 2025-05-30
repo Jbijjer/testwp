@@ -581,20 +581,32 @@
     }
 
     .team-photo {
-      width: 95px;
-      height: 95px;
+      width: 135px;
+      height: 135px;
       background: var(--main-yellow);
       border-radius: 50%;
-      margin: 0 auto 16px;
+      margin: 0 auto 18px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--main-purple);
-      font-size: 0.9rem;
+      font-size: 1.15rem;
       font-weight: bold;
-      border: 4px solid var(--main-purple);
+      border: 5px solid var(--main-purple);
       text-align: center;
+      line-height: 1.2;
     }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* L’image remplit le cercle sans déformer */
+      border-radius: 50%;
+      /* Rognage en cercle parfait */
+      display: block;
+    }
+
 
     .team-member h4 {
       color: var(--main-purple);
@@ -1124,29 +1136,39 @@
     <h2 class="section-title">Notre Équipe</h2>
     <div class=" team-grid">
       <div class="team-member">
-        <div class="team-photo">PHOTO<br />ÉQUIPE<br />1</div>
-        <h4>Formateur 1</h4>
-        <p>Spécialiste en improvisation</p>
+        <div class="team-photo">
+          <img src="images\christian.jpg">
+        </div>
+        <h4>Christian L'Italien</h4>
+        <p>Responsable du volet éducatif, Improvisateur</p>
       </div>
       <div class="team-member">
-        <div class="team-photo">PHOTO<br />ÉQUIPE<br />2</div>
-        <h4>Formateur 2</h4>
-        <p>Expert en arts vivants</p>
+        <div class="team-photo">
+          <img src="images\marc.jpg">
+        </div>
+        <h4>Marc Guiol</h4>
+        <p>Professeur, Improvisateur</p>
       </div>
       <div class="team-member">
-        <div class="team-photo">PHOTO<br />ÉQUIPE<br />3</div>
-        <h4>Formateur 3</h4>
-        <p>Comédien professionnel</p>
+        <div class="team-photo">
+          <img src="images\marie-eve-l.jpg">
+        </div>
+        <h4>Marie-Eve Lemire</h4>
+        <p>Administratrice, Chargée de projet, Improvisatrice</p>
       </div>
       <div class="team-member">
-        <div class="team-photo">PHOTO<br />ÉQUIPE<br />4</div>
-        <h4>Formateur 4</h4>
-        <p>Metteur en scène</p>
+        <div class="team-photo">
+          <img src="images\marie-eve-b.jpg">
+        </div>
+        <h4>Marie-Eve Bouchard</h4>
+        <p>Administratrice, Chargée de projet, Improvisatrice</p>
       </div>
       <div class="team-member">
-        <div class="team-photo">PHOTO<br />ÉQUIPE<br />5</div>
-        <h4>Formateur 5</h4>
-        <p>Directeur artistique</p>
+        <div class="team-photo">
+          <img src="images\deejay.jpg">
+        </div>
+        <h4>Deejay McLellan</h4>
+        <p>Administrateur, Improvisateur</p>
       </div>
     </div>
   </section>
