@@ -199,11 +199,6 @@
       align-items: center;
     }
 
-    .scroll-indicator {
-      position: relative;
-      z-index: 2;
-    }
-
     .hero::after {
       content: "";
       position: absolute;
@@ -307,33 +302,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 30px;
-      height: 46px;
-      border: 2px solid rgba(255, 193, 7, 0.6);
-      border-radius: 25px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding-top: 9px;
-      opacity: 0.7;
-      z-index: 2;
-    }
-
-    .scroll-indicator::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      background: var(--main-yellow);
-      border-radius: 50%;
-      animation: scroll 2s infinite;
-      display: block;
     }
 
     @keyframes scroll {
@@ -1045,7 +1013,6 @@
       <p class="hero-subtitle">La première compagnie d'improvisation professionnelle<br>du Saguenay-Lac-Saint-Jean</p>
       <a href="#program" class="cta-button">Découvrez notre programme scolaire</a>
     </div>
-    <div class="scroll-indicator" aria-hidden="true"></div>
   </section>
   <section class="section" id="mission">
     <h2 class="section-title">Notre Mission</h2>
