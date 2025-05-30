@@ -1072,36 +1072,34 @@
           align-items: center;
         }
 
-        .modal-left,
-        .modal-right {
-          flex: 1 1 100%;
-          width: 100%;
-          padding: 24px 18px;
-          text-align: center;
-        }
-
         .modal-left {
+          padding: 24px 16px;
+          width: 100%;
+          text-align: center;
           border-bottom: 1px solid #eee;
         }
 
-        .modal-right p {
-          font-size: 1rem;
-          line-height: 1.6;
-          padding: 0 10px;
-          text-align: left;
-        }
-
-        .modal-left h2 {
-          font-size: 1.4rem;
-        }
-
-        .modal-left h4 {
-          font-size: 1rem;
-        }
-
         .modal-photo {
-          width: 130px;
-          height: 130px;
+          width: 140px;
+          height: 140px;
+          object-fit: cover;
+          border-radius: 50%;
+          border: 4px solid var(--main-yellow);
+          margin: 0 auto 16px auto;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-right {
+          width: 100%;
+          max-height: 70vh;
+          padding: 22px 18px;
+          overflow-y: auto;
+        }
+
+        .modal-content {
+          margin: 6% auto;
+          max-height: 92vh;
+          overflow-y: auto;
         }
 
         #expandBioBtn {
