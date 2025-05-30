@@ -34,7 +34,8 @@
     }
 
     .inscription-visible {
-      display: none !important;
+      /* Ici on met "block" ou "none" */
+      display: block
     }
 
     .main-nav {
@@ -43,7 +44,6 @@
       box-shadow: none !important;
       margin-top: 40px;
       position: absolute;
-      /* le menu est en haut, par-dessus le hero, mais ne reste pas sticky */
       top: 0;
       left: 0;
       z-index: 30;
@@ -85,21 +85,16 @@
       background: none;
       border-radius: 5px;
       margin: 0 1px;
-      /* Double ombre pour contraste (noir + jaune pâle/glow) */
       text-shadow:
         0 2px 8px rgba(0, 0, 0, 0.63),
         0 0 4px #ffde80cc,
         0 0 2px #000;
-      /* Outline en bonus (décommente si tu veux renforcer encore plus)
-        -webkit-text-stroke: 0.5px #222;
-        */
       transition: color 0.22s, background 0.17s;
     }
 
     .nav-menu a:hover,
     .nav-menu a:focus {
       color: var(--main-yellow);
-      /*background: rgba(255, 193, 7, 0.13);*/
       outline: none;
     }
 
@@ -249,7 +244,6 @@
       font-size: 3.2rem;
       font-weight: 900;
       letter-spacing: 0.01em;
-      /* pour assurer la lisibilité même sur du clair */
       text-shadow:
         0 3px 16px #000,
         0 1px 0 #222,
@@ -380,7 +374,6 @@
       margin: 40px 0;
       width: 100%;
       max-width: 1200px;
-      /* Ajuste selon ta largeur de section souhaitée */
       margin-left: auto;
       margin-right: auto;
     }
@@ -444,10 +437,6 @@
       text-align: center;
     }
 
-    .program-highlight:hover {
-      transform: translateY(-7px) scale(1.01);
-    }
-
     .program-highlight h3 {
       font-size: 2.18rem;
       margin-bottom: 0.7rem;
@@ -469,20 +458,20 @@
       display: flex;
       flex-direction: row !important;
       /* Toujours en ligne, même sur mobile */
-      gap: 18px;
+      gap: 38px;
       justify-content: center;
       align-items: center;
-      margin: 34px 0 34px 0;
+      margin: 30px 0 30px 0;
       flex-wrap: nowrap;
+      height: 255px;
       overflow-x: auto;
-      /* Ajoute un scroll horizontal si besoin */
       -webkit-overflow-scrolling: touch;
     }
 
     .program-img {
-      max-width: 270px;
+      max-width: 320px;
       width: 100%;
-      height: 180px;
+      height: 240px;
       object-fit: cover;
       border-radius: 18px;
       box-shadow: 0 4px 28px rgba(74, 59, 107, 0.17);
@@ -490,17 +479,14 @@
       background: #fff;
       transition: transform 0.2s, box-shadow 0.2s;
       cursor: pointer;
-      /* curseur main */
-      flex: 0 0 180px;
-      /* Force la largeur min sur mobile */
+      flex: 0 0 240px;
     }
 
     .program-img:hover {
-      transform: scale(1.04) rotate(-1deg);
+      transform: scale(1.03) rotate(-1deg);
       box-shadow: 0 12px 40px rgba(255, 193, 7, 0.12);
     }
 
-    /* Encadrés en bas (inchangés de la version précédente) */
     .program-box-row {
       display: flex;
       gap: 32px;
@@ -545,7 +531,6 @@
 
     .program-box:hover {
       box-shadow: 0 8px 40px rgba(255, 193, 7, 0.18);
-      transform: translateY(-4px) scale(1.01);
     }
 
     .highlight-box {
@@ -601,9 +586,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      /* L’image remplit le cercle sans déformer */
       border-radius: 50%;
-      /* Rognage en cercle parfait */
       display: block;
     }
 
@@ -700,7 +683,6 @@
       z-index: 1020;
       box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
       animation: slideUp 0.7s;
-      display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.07rem;
@@ -771,6 +753,11 @@
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
+    }
+
+    .back-to-top.bumped {
+      bottom: 90px;
+      /* hauteur du bandeau + marge */
     }
 
     .back-to-top:hover {
@@ -867,7 +854,6 @@
 
       .hero {
         min-height: 75vh;
-        /* Passe de 100vh à 75vh sur tablette/mobile */
         padding-top: 38px;
         padding-bottom: 22px;
       }
@@ -927,7 +913,6 @@
       @media (max-width: 600px) {
         .hero {
           min-height: 60vh;
-          /* Encore moins haut sur téléphone */
           padding-top: 26px;
           padding-bottom: 15px;
         }
@@ -996,11 +981,12 @@
 
     <!-- Slideshow background -->
     <div class="hero-bg-slideshow" id="heroSlideshow">
+      <!-- Ajoute/retire tes images ici -->
       <img src="images\slideshow-4.jpg" alt="" class="hero-bg-slide active" aria-hidden="true">
       <img src="images\slideshow-2.jpg" alt="" class="hero-bg-slide" aria-hidden="true">
       <img src="images\slideshow-3.jpg" alt="" class="hero-bg-slide" aria-hidden="true">
       <img src="images\slideshow-1.jpg" alt="" class="hero-bg-slide" aria-hidden="true">
-      <!-- Ajoute/retire tes images ici -->
+      <!-- Fin du slideshow -->
     </div>
     <div class="hero-content">
       <h1>Imprévu Improvisation</h1>
@@ -1228,7 +1214,7 @@
       • Début des inscriptions:
       <span class="date-highlight">10 février 2025</span>
     </div>
-    <button class="close-banner" onclick="closeBanner()" aria-label="Fermer le bandeau">
+    <button class="close-banner" id="closeBanner" aria-label="Fermer le bandeau">
       ×
     </button>
   </div>
@@ -1240,8 +1226,42 @@
     </p>
   </footer>
   <script>
-    // Slideshow hero background
-    document.addEventListener("DOMContentLoaded", function () {
+    // ----- Fonctions utilitaires -----
+    function closeBanner() {
+      const banner = document.getElementById("topBanner");
+      banner.classList.add("hidden");
+
+      const backToTopBtn = document.getElementById("backToTop");
+      backToTopBtn?.classList.remove("bumped");
+    }
+
+    function updateBackToTopPosition() {
+      const banner = document.getElementById("topBanner");
+      const backToTopBtn = document.getElementById("backToTop");
+
+      if (!banner || !backToTopBtn) return;
+
+      if (banner.classList.contains("hidden")) {
+        backToTopBtn.classList.remove("bumped");
+      } else {
+        backToTopBtn.classList.add("bumped");
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function toggleMobileMenu() {
+      const navMenu = document.getElementById("navMenu");
+      const mobileBtn = document.getElementById("mobileToggle");
+      navMenu.classList.toggle("active");
+      mobileBtn.setAttribute("aria-expanded", navMenu.classList.contains("active"));
+    }
+
+    // ----- Initialisation -----
+    document.addEventListener("DOMContentLoaded", () => {
+      // Slideshow
       const slides = Array.from(document.querySelectorAll(".hero-bg-slide"));
       let idx = 0;
       setInterval(() => {
@@ -1249,41 +1269,24 @@
         idx = (idx + 1) % slides.length;
         slides[idx].classList.add("active");
       }, 4500);
-      document.getElementById("mobileToggle").addEventListener("click", toggleMobileMenu);
-    });
-    // Fermeture du bandeau
-    function closeBanner() {
-      document.getElementById("topBanner").classList.add("hidden");
-    }
-    // Scroll top
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-    // Menu mobile
-    function toggleMobileMenu() {
-      const navMenu = document.getElementById("navMenu");
-      navMenu.classList.toggle("active");
-      const mobileBtn = document.getElementById("mobileToggle");
-      const expanded = navMenu.classList.contains("active");
-      mobileBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
-    }
-    // Ferme menu mobile au clic sur un lien
-    document.addEventListener("DOMContentLoaded", () => {
+
+      // Bouton menu mobile
+      document.getElementById("mobileToggle")?.addEventListener("click", toggleMobileMenu);
+
+      // Fermer bandeau d'inscription
+      document.getElementById("closeBanner")?.addEventListener("click", closeBanner);
+
+      // Fermer le menu mobile au clic sur un lien
       document.querySelectorAll(".nav-menu a").forEach((link) => {
         link.addEventListener("click", () => {
           if (window.innerWidth < 900) {
-            document.getElementById("navMenu").classList.remove("active");
-            document
-              .getElementById("mobileToggle")
-              .setAttribute("aria-expanded", "false");
+            document.getElementById("navMenu")?.classList.remove("active");
+            document.getElementById("mobileToggle")?.setAttribute("aria-expanded", "false");
           }
         });
       });
-      // Anim au scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -40px 0px",
-      };
+
+      // Animation au scroll
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -1291,16 +1294,19 @@
             entry.target.style.transform = "translateY(0)";
           }
         });
-      }, observerOptions);
-      document
-        .querySelectorAll(".feature-card, .section h2, .team-member")
-        .forEach((el) => {
-          el.style.opacity = "0";
-          el.style.transform = "translateY(30px)";
-          el.style.transition = "all 0.7s cubic-bezier(0.23,1,0.32,1)";
-          observer.observe(el);
-        });
-      // Smooth scroll anchors
+      }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -40px 0px"
+      });
+
+      document.querySelectorAll(".feature-card, .section h2, .team-member").forEach((el) => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(30px)";
+        el.style.transition = "all 0.7s cubic-bezier(0.23,1,0.32,1)";
+        observer.observe(el);
+      });
+
+      // Smooth scroll
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           const target = document.querySelector(this.getAttribute("href"));
@@ -1310,40 +1316,48 @@
           }
         });
       });
+
+      // Lightbox
+      const lightbox = document.getElementById('imgLightbox');
+      const lightboxImg = document.getElementById('imgLightboxImg');
+      const lightboxClose = document.getElementById('imgLightboxClose');
+
+      document.querySelectorAll('.program-img').forEach((img) => {
+        img.addEventListener('click', function () {
+          lightboxImg.src = this.src;
+          lightbox.classList.add('visible');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      lightboxClose?.addEventListener('click', () => {
+        lightbox.classList.remove('visible');
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      });
+
+      lightbox?.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          lightbox.classList.remove('visible');
+          lightboxImg.src = '';
+          document.body.style.overflow = '';
+        }
+      });
     });
-    // Back to top button
+
+    // Bouton "back to top"
     window.addEventListener("scroll", () => {
       const btn = document.getElementById("backToTop");
       if (window.scrollY > 320) {
-        btn.classList.add("visible");
+        btn?.classList.add("visible");
       } else {
-        btn.classList.remove("visible");
+        btn?.classList.remove("visible");
       }
     });
-    // Lightbox pop-up sur clic image
-    document.querySelectorAll('.program-img').forEach(function (img) {
-      img.addEventListener('click', function () {
-        const lightbox = document.getElementById('imgLightbox');
-        document.getElementById('imgLightboxImg').src = this.src;
-        lightbox.classList.add('visible');
-        document.body.style.overflow = 'hidden'; // Empêche de scroller derrière
-      });
-    });
-    document.getElementById('imgLightboxClose').onclick = function () {
-      const lightbox = document.getElementById('imgLightbox');
-      lightbox.classList.remove('visible');
-      document.getElementById('imgLightboxImg').src = '';
-      document.body.style.overflow = '';
-    };
-    // Fermer au clic sur le fond (mais pas l'image)
-    document.getElementById('imgLightbox').addEventListener('click', function (e) {
-      if (e.target === this) {
-        this.classList.remove('visible');
-        document.getElementById('imgLightboxImg').src = '';
-        document.body.style.overflow = '';
-      }
-    });
+
+    updateBackToTopPosition();
   </script>
+
 </body>
 
 </html>
