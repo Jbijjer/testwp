@@ -34,7 +34,7 @@
     }
 
     .inscription-visible {
-      /* Ici on met "block" ou "none" */
+      /* Ici on met "block" ou "none" pour afficher ou non les encadrés jaunes pour les inscriptions. */
       display: block
     }
 
@@ -757,6 +757,7 @@
 
     .back-to-top.bumped {
       bottom: 90px;
+      transition: bottom 0.3s ease;
       /* hauteur du bandeau + marge */
     }
 
@@ -908,6 +909,12 @@
       .mobile-menu-toggle:active,
       .mobile-menu-toggle:focus {
         background: #6b4e7d;
+      }
+
+      .back-to-top.bumped {
+        bottom: 120px;
+        /* ajuste si ton bandeau est plus ou moins haut */
+        transition: bottom 0.3s ease;
       }
 
       @media (max-width: 600px) {
