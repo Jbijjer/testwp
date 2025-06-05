@@ -298,6 +298,35 @@
       z-index: 1;
     }
 
+    .hero-nav {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .hero-nav-btn {
+      pointer-events: all;
+      background: rgba(0, 0, 0, 0.35);
+      border: none;
+      color: #fff;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .hero-nav-btn:hover {
+      background: rgba(0, 0, 0, 0.55);
+    }
+
     .hero::before {
       display: none !important;
     }
@@ -1183,6 +1212,10 @@
       <img src="images/slideshow-0.jpg" alt="" class="hero-bg-slide" aria-hidden="true">
       <!-- Fin du slideshow -->
     </div>
+    <div class="hero-nav">
+      <button id="heroPrev" class="hero-nav-btn" aria-label="Image précédente">‹</button>
+      <button id="heroNext" class="hero-nav-btn" aria-label="Image suivante">›</button>
+    </div>
     <div class="hero-content">
       <h1>Imprévu Improvisation</h1>
       <p class="hero-subtitle">La première compagnie d'improvisation professionnelle<br>du Saguenay-Lac-Saint-Jean</p>
@@ -1458,11 +1491,43 @@
       // Slideshow
       const slides = Array.from(document.querySelectorAll(".hero-bg-slide"));
       let idx = 0;
-      setInterval(() => {
+      const intervalTime = 4500;
+      let timer;
+
+      function showSlide(i) {
         slides[idx].classList.remove("active");
-        idx = (idx + 1) % slides.length;
+        idx = (i + slides.length) % slides.length;
         slides[idx].classList.add("active");
-      }, 4500);
+      }
+
+      function nextSlide() {
+        showSlide(idx + 1);
+      }
+
+      function prevSlide() {
+        showSlide(idx - 1);
+      }
+
+      function startTimer() {
+        timer = setInterval(nextSlide, intervalTime);
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        startTimer();
+      }
+
+      startTimer();
+
+      document.getElementById("heroNext")?.addEventListener("click", () => {
+        nextSlide();
+        resetTimer();
+      });
+
+      document.getElementById("heroPrev")?.addEventListener("click", () => {
+        prevSlide();
+        resetTimer();
+      });
 
       // Bouton menu mobile
       document.getElementById("mobileToggle")?.addEventListener("click", toggleMobileMenu);
